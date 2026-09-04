@@ -1,28 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import {
-  Search,
-  Plus,
-  MapPin,
-  X,
-  Home,
-  Bot,
-  User,
-  Phone,
-  ShieldCheck,
-  Send,
-  LogIn,
-  LogOut
+  Search, Plus, MapPin, X, Home, Bot, User, Phone, ShieldCheck, Send, LogIn, LogOut, Package, Tag, ShoppingBag, AlertCircle
 } from 'lucide-react';
 
-// SUPABASE & GROQ SETUP
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "YOUR_SUPABASE_URL";
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "YOUR_SUPABASE_ANON_KEY";
+// --- RUNTIME ERROR CATCHER (Blank screen ke bajaye error box dikhayega) ---
+if (typeof window !== 'undefined') {
+  window.addEventListener('error', (event) => {
+    const root = document.getElementById('root');
+    if (root && !document.getElementById('error-box')) {
+      root.innerHTML = `
+        <div id="error-box" style="padding: 20px; color: #721c24; background: #f8d7da; border: 1px solid #f5c6cb; margin: 20px; border-radius: 8px; font-family: sans-serif;">
+          <h3 style="margin-top:0;">Runtime Exception:</h3>
+          <p><b>Message:</b> ${event.message}</p>
+        </div>
+      `;
+    }
+  });
+}
+
+// --- SAFE SUPABASE CLIENT SETUP ---
+const getEnv = (key: string) => {
+  try {
+    return (import.meta as any).env?.[key] || '';
+  } catch {
+    return '';
+  }
+};
+
+const rawUrl = getEnv('VITE_SUPABASE_URL').trim();
+const rawKey = getEnv('VITE_SUPABASE_ANON_KEY').trim();
+
+// Automatic URL formatting for flawless Supabase Auth & Database functions
+const supabaseUrl = rawUrl.startsWith('http') ? rawUrl : 'https://placeholder.supabase.co';
+const supabaseAnonKey = rawKey || 'placeholder-anon-key';
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || "";
+// --- GROQ AI INTEGRATION SETUP ---
+const GROQ_API_KEY = getEnv('VITE_GROQ_API_KEY').trim();
 
-async function fetchGroqChatResponse(userMessage: string) {
+export const askAI = async (userMessage: string) => {
   if (!GROQ_API_KEY) return "Groq API Key missing hai. Netlify variables me add karein.";
   try {
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -41,7 +59,8 @@ async function fetchGroqChatResponse(userMessage: string) {
   } catch (err) {
     return "AI Error: Server respond nahi kar raha.";
   }
-}
+};
+
 
 const citiesList = ['All Cities', 'Sargodha', 'Faisalabad', 'Lahore', 'Karachi', 'Islamabad'];
 
