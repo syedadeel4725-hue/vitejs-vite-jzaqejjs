@@ -63,14 +63,14 @@ export default function App() {
     </div>
   </div>
 
-  <!-- Sign Up / OTP Modal -->
-  <div id="signupModal" class="modal">
-    <div class="modal-content auth-box">
-      <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+  {/* Sign Up / OTP Modal */}
+<div id="signupModal" className="modal">
+  <div className="modal-content auth-box">
+    <span className="close-btn" onClick={() => closeModal('signupModal')}>&times;</span>
+
+    {/* Step 1: Role & Basic Info */}
+    <form id="signupForm" onSubmit={(event) => handleSignupSubmit(event)}>
       
-      <!-- Step 1: Role & Basic Info -->
-      <form id="signupForm" onsubmit="handleSignupSubmit(event)">
-        <h3>Create Account</h3>
         <div class="role-selector">
           <label><input type="radio" name="userRole" value="buyer" checked onclick="toggleSellerFields(false)"> Join as Buyer</label>
           <label><input type="radio" name="userRole" value="seller" onclick="toggleSellerFields(true)"> Join as Seller</label>
