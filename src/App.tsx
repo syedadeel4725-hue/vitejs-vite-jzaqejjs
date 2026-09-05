@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="ur">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service & Product Platform</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+import React from 'react';
+
+export default function App() {
+  return (
+    <>
+      {/* YAHAN AAPKA BAQI SAARA HTML CODE AAYEGA */}
+      {/* Example: <nav className="navbar"> ... </nav> vagairah */}
+    </>
+  );
+}
 
   <!-- Navigation Bar -->
   <nav class="navbar">
@@ -112,164 +113,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
-          * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background-color: #f5f6f8;
-  color: #333;
-}
-
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  padding: 15px 30px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.nav-links .nav-btn {
-  background: none;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-}
-
-.nav-links .nav-btn.active {
-  border-color: #007bff;
-  color: #007bff;
-  font-weight: bold;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 0 15px;
-}
-
-.content-section {
-  display: none;
-}
-
-.content-section.active {
-  display: block;
-}
-
-/* 2-column or 3-column Grid Layout */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-}
-
-.card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.card-title {
-  font-size: 18px;
-  margin: 10px 0 5px;
-}
-
-.badge {
-  display: inline-block;
-  background: #e1f5fe;
-  color: #0288d1;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-.center-btn {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.view-all-btn, .submit-btn, .chat-btn {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.chat-btn {
-  background: #28a745;
-  width: 100%;
-  margin-top: 15px;
-  font-size: 16px;
-}
-
-/* Modals & Forms */
-.modal {
-  display: none;
-  position: fixed;
-  top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 25px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.hidden { display: none; }
-
-.role-selector {
-  margin: 15px 0;
-  display: flex;
-  gap: 15px;
-}
-
-form input, form select, form textarea {
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
   // Sample Data (10 to 15 items maximum on load)
 const servicesData = Array.from({ length: 12 }, (_, i) => ({
   id: i + 1,
